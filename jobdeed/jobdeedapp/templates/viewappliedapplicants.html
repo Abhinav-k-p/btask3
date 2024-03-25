@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>{{job.jobtitle}}</h2>
+    <ul>
+        {%for applicant in user %}
+        <li>
+            <p>{{applicant.name}}</p>
+            <p>{{applicant.experience}}</p>
+            <p>{{applicant.phonenumber}}</p>
+            <p>{{applicant.coverletter}}</p>
+            <p><a href="{{applicant.file.url}}">resume </a></p>
+        </li>
+    </ul>
+        {%endfor%}
+</body>
+</html>

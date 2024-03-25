@@ -1,0 +1,11 @@
+<li><a href="{% url 'Jobcreate' %}"><span>Create job</span></a></li>
+<li><a href="{% url 'applicantview' %}"><span>view applicants</span></a></li>
+{%for data in jobs%}
+<h4>Company Name {{data.company_name}}</h4>
+<h4>jobtitle {{data.jobtitle}}</h4>
+<h4>jobdescription {{data.jobdescription}}</h4>
+<h4>qualifications{{data.qualifications}}</h4>
+<h4>salary {{data.salary}}</h4>
+<h4>type {{data.type}}</h4>
+<h4>Active {{data.is_available}}</h4>
+{%endfor%}

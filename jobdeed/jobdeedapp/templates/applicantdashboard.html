@@ -1,1 +1,15 @@
 apllicant
+<li><a href="{% url 'edit' %}"><span>add details</span></a></li>
+<li><a href="{% url 'viewprofile' %}"><span>view profile</span></a></li>
+
+{%for data in job%}
+<h4>Company Name {{data.company_name}}</h4>
+<h4>jobtitle {{data.jobtitle}}</h4>
+<h4>jobdescription {{data.jobdescription}}</h4>
+<h4>qualifications{{data.qualifications}}</h4>
+<h4>salary {{data.salary}}</h4>
+<h4>type {{data.type}}</h4>
+<h4>Active {{data.is_available}}</h4>
+<a href="{% url "viewjobform" %}">apply</a>
+{%endfor%}
+
