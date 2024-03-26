@@ -39,18 +39,28 @@ def viewprofile(request):
         
 #     return render(request,'jobapply.html',{'viewform': viewform})
 
-def viewform(request):
+def viewform(request, job_id):
+    job = get_object_or_404(Newjob, pk=job_id)
     if request.method == 'POST':
-        form = JobDoneForm(request.POST)
-        if form.is_valid():
-            # Assign the current user as the applicant before saving the form
-            job_apply_instance = form.save(commit=False)
-            job_apply_instance.applicant = request.user
+        viewform = JobDoneForm(request.POST, request.FILES)
+        if viewform.is_valid():
+            job_apply_instance = viewform.save(commit=False)
+            job_apply_instance.applicant = request.user  # Assuming applicant_id corresponds to user
+            job_apply_instance.job = job
             job_apply_instance.save()
-            return redirect('applicanthome')  # Redirect to success URL after saving
+            job_seekeremail = request.user.email
+            subject = f"job application for {job.jobtitle}"
+            message = f"Application for this job is submitted succesfully send"
+            send_mail(subject,message,settings.EMAIL_HOST_USER,[job_seekeremail])
+            recruiter_mail = job.user.email
+            subject = f"job application {job.jobtitle}"
+            message = f"{request.user.username} is applied for {job.jobtitle}"
+            send_mail(subject,message,settings.EMAIL_HOST_USER,[recruiter_mail])
+            return redirect('applicanthome')
     else:
-        form = JobDoneForm()
-    return render(request, 'jobapply.html', {'form': form})
+        viewform = JobDoneForm()
+        
+    return render(request, 'jobapply.html', {'viewform': viewform})
 
 
 
