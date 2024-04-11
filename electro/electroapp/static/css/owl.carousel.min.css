@@ -1,0 +1,76 @@
+/* Adjusted style and format for Owl Carousel */
+
+/* Carousel container */
+.owl-carousel {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Stage */
+.owl-carousel .owl-stage {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Clearfix for the stage */
+.owl-carousel .owl-stage:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Items and wrapper */
+.owl-carousel .owl-item,
+.owl-carousel .owl-wrapper {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Individual item */
+.owl-carousel .owl-item {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Images within items */
+.owl-carousel .owl-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for dots and nav buttons */
+.owl-carousel .owl-dot,
+.owl-carousel .owl-nav button {
+    background-color: #336699; /* Dark blue color for dots and nav buttons */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.owl-carousel .owl-dot.active,
+.owl-carousel .owl-nav button:hover {
+    background-color: #6699cc; /* Light blue shade for active dot and hover */
+}
+
+/* Video play icon */
+.owl-carousel .owl-video-play-icon {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Hide video play icon when video is playing */
+.owl-carousel .owl-video-playing .owl-video-play-icon {
+    display: none;
+}
